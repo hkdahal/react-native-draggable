@@ -166,20 +166,22 @@ export default class Draggable extends Component {
 	_renderWithDefaultBehavior = () => {
 		const touchableContent = this._getTextOrImage();
 		const { pressDrag, longPressDrag, pressInDrag, pressOutDrag, children } = this.props
-		<TouchableOpacity
-			style={this._dragItemCss()}
-			onPress={pressDrag}
-			onLongPress={longPressDrag}
-			onPressIn={pressInDrag}
-			onPressOut={pressOutDrag}
-		>
-			{ touchableContent }
-		</TouchableOpacity>
+		return (
+			<TouchableOpacity
+				style={this._dragItemCss()}
+				onPress={pressDrag}
+				onLongPress={longPressDrag}
+				onPressIn={pressInDrag}
+				onPressOut={pressOutDrag}
+			>
+				{ touchableContent }
+			</TouchableOpacity>
+		)
 	}
 
 	render() {
 		const { children } = this.props
-		const content = children ? chidren : this._renderWithDefaultBehavior()
+		const content = children ? children : this._renderWithDefaultBehavior()
 		return (
 			<View style={this._positionCss()}>
 				<Animated.View
